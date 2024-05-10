@@ -54,4 +54,18 @@ public class GameManager : MonoBehaviour
             moneyData.AddMoney((int)(moneyData.moneyPerSecond)); // Add money per second to the total
         }
     }
+
+    // Method to quit and exit the game
+    public void QuitGame()
+    {
+        // Quit the application if running in standalone mode (PC, Mac, Linux)
+        #if UNITY_STANDALONE
+            Application.Quit();
+        #endif
+
+        // Quit the editor play mode if running in the Unity Editor
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #endif
+    }
 }
